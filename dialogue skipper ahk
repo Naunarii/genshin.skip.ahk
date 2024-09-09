@@ -1,0 +1,21 @@
+#Persistent
+toggle := false
+
+F1::
+toggle := !toggle  ; toggle değişkeni her F1 tuşuna basıldığında tersine çevrilecek
+if (toggle)
+{
+    ; İmleci X=1570 ve Y=780 koordinatlarına taşı
+    MouseMove, 1570, 780
+
+    SetTimer, PressSpaceAndClick, 500  ; Eğer toggle true ise, her 500ms'de bir PressSpaceAndClick fonksiyonu çalışacak
+}
+else
+{
+    SetTimer, PressSpaceAndClick, Off  ; toggle false olduğunda, timer duracak
+}
+return
+
+PressSpaceAndClick:
+    Send, {Space}  ; Space tuşuna bas
+    Click  ; Sol mouse tıkla
