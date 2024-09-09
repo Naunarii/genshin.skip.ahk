@@ -1,24 +1,21 @@
 #Persistent
-SendMode, Input  
-
 toggle := false
 
 F1::
-toggle := !toggle  
+toggle := !toggle
 if (toggle)
 {
-    MouseMove, 1570, 780
-
-    SetTimer, PressSpaceAndClick, 500  
+    SetTimer, PressSpaceAndClick, 500
 }
 else
 {
-    SetTimer, PressSpaceAndClick, Off  
+    SetTimer, PressSpaceAndClick, Off
 }
 return
 
 PressSpaceAndClick:
-    SendInput, {Space}  
-    Click  
+    ; Space tuşunu GenshinImpact.exe'ye gönder
+    ControlSend,, {Space}, ahk_exe GenshinImpact.exe
+    ; X=1570, Y=780 koordinatlarında GenshinImpact.exe'ye sol tıklama gönder
+    ControlClick, x1570 y780, ahk_exe GenshinImpact.exe
 return
-
