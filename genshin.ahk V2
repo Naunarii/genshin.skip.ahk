@@ -1,10 +1,13 @@
 #Persistent
+SendMode, Input
+
 toggle := false
 
 F1::
 toggle := !toggle
 if (toggle)
 {
+    MouseMove, 1570, 780, 0  ; İmleci belirtilen koordinatlara taşır
     SetTimer, PressSpaceAndClick, 500
 }
 else
@@ -14,8 +17,10 @@ else
 return
 
 PressSpaceAndClick:
-    ; Space tuşunu GenshinImpact.exe'ye gönder
-    ControlSend,, {Space}, ahk_exe GenshinImpact.exe
-    ; X=1570, Y=780 koordinatlarında GenshinImpact.exe'ye sol tıklama gönder
-    ControlClick, x1570 y780, ahk_exe GenshinImpact.exe
+    ; Sadece Genshin Impact arka planda olsa bile işlemleri gerçekleştir
+    if WinExist("ahk_exe GenshinImpact.exe")  ; Eğer Genshin Impact penceresi varsa
+    {
+        ControlSend,, {Space}, ahk_exe GenshinImpact.exe  ; Space tuşunu gönder
+        ControlClick, x1570 y780, ahk_exe GenshinImpact.exe  ; Sol tıklama gönder
+    }
 return
