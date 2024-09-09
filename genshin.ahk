@@ -1,0 +1,20 @@
+﻿#Persistent
+toggle := false
+
+F1::
+toggle := !toggle
+if (toggle)
+{
+    MouseMove, 1570, 780
+
+    SetTimer, PressSpaceAndClick, 500
+}
+else
+{
+    SetTimer, PressSpaceAndClick, Off
+}
+return
+
+PressSpaceAndClick:
+    Send, {Space}
+    Click 
